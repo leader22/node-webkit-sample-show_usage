@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Usage Viewer</title>
+<link rel="stylesheet" href="src/style.css" type="text/css">
+</head>
+<body>
+  <h1>Show usage<small> - node-webkit sample</small></h1>
+<div id="js-output" class="l-main-container">Usage will be shown here...</div>
+<div id="js-exit" class="l-exit-btn">Exit</div>
+<script id="js-tmpl" type="x-my-template">
+<h2>Information</h2>
+<ul>
+  <li>Hostname: <%= os.hostname%></li>
+  <li>Type: <%= os.type %> <%= os.release %> <%= os.arch %></li>
+  <li>CPU: <%= os.cpuModelName %></li>
+</ul>
+
+<h2>LoadAvg</h2>
+<ul>
+  <% _.forEach(loadavg, function(i) { %>
+  <li><%= i %></li>
+  <% }); %>
+</ul>
+
+<h2>Uptime</h2>
+<ul>
+<li>OS: <%= uptime.os %> / Node: <%= uptime.node %></li>
+</ul>
+
+<h2>Memory</h2>
+<ul>
+  <li>OS: <%= memory.os.used %> / <%= memory.os.total %> used</li>
+  <li>Node: <%= memory.node.used %> / <%= memory.node.total %> used</li>
+</ul>
+</script>
+<script src="src/main.js"></script>
+</body>
+</html>
